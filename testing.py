@@ -30,7 +30,7 @@ class TestPlagiarismDetection(unittest.TestCase):
                              "Plagiarize Percentage not matching" +
                              " for test in index: " + str(index))
 
-    def test_get_phrase_map(self):
+    def test_map_of_tuples_with_true_value(self):
         tuples = [
             [("tuple1"), ("tuple2")],
             [("just"), ("test"), ("here")],
@@ -51,12 +51,12 @@ class TestPlagiarismDetection(unittest.TestCase):
         PD = PlagiarismDetection(pass_path, pass_path, pass_path)
 
         for index, test in enumerate(tests):
-            actual = PD.get_phrase_map(test[0])
+            actual = PD.map_of_tuples_with_true_value(test[0])
             expected = test[1]
             self.assertEqual(expected, actual, "Not getting correct "
                              + "tuple map for test at index: " + str(index))
 
-    def test_word_to_synonym(self):
+    def test_get_synonym(self):
         tests = [
             ("testsyns_1.txt", "sprint", "run"),
             ("testsyns_2.txt", "nickname", "name"),
@@ -68,7 +68,7 @@ class TestPlagiarismDetection(unittest.TestCase):
         for index, test in enumerate(tests):
             PD = PlagiarismDetection(pass_path, pass_path,
                                      self.test_path+test[0])
-            actual = PD.word_to_synonym(test[1])
+            actual = PD.get_synonym(test[1])
             expected = test[2]
             self.assertEqual(expected, actual, "Word to synonym not "
                              + "matching for test at index: " + str(index))
