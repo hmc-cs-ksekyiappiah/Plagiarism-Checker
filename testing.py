@@ -73,16 +73,4 @@ class TestPlagiarismDetection(unittest.TestCase):
             self.assertEqual(expected, actual, "Word to synonym not "
                              + "matching for test at index: " + str(index))
 
-    def test_to_lowercase_alphas(self):
-        tests = [
-            ("Hello!!!", "hello"),
-            (".!#@@!!!...A..!#", "a"),
-            ("goodbye", "goodbye")
-        ]
-        pass_path = self.test_path + self.pass_file
-        PD = PlagiarismDetection(pass_path, pass_path, pass_path)
-        for index, test in enumerate(tests):
-            actual = PD.to_lowercase_alphas(test[0])
-            expected = test[1]
-            self.assertEqual(expected, actual, "To lowercase alphas not "
-                             + "matching for test at index: " + str(index))
+
